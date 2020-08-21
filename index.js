@@ -115,7 +115,7 @@ function createDeleteOrderButton(order) {
 //createNewToppingButton makes a button in the table that submits the User's input:
 function createNewToppingButton(order) {
     let btn = document.createElement('button');
-    btn.className = 'btn btn-primary form-control';
+    btn.className = 'btn btn-light form-control';
     btn.innerHTML = 'Add Topping';
     btn.onclick = () => {
         order.toppings.push(new Topping(getValue(`name-input-${order.id}`), getValue(`preference-input-${order.id}`))); //This line gets the value from the createOrderTable (currently lines 144-162)
@@ -128,7 +128,7 @@ function createNewToppingButton(order) {
 //createOrderTable makes the HTML for the customer order:
 function createOrderTable(order){
     let table = document.createElement('table');
-    table.setAttribute('class', 'table table-secondary table-striped');
+    table.setAttribute('class', 'table table-dark table-striped table-bordered');
     let row = table.insertRow(0);
     let nameColumn = document.createElement('th');
     let preferenceColumn = document.createElement('th');
