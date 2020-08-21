@@ -1,0 +1,36 @@
+body {
+    background-image: url("images/pizza1.jpg");
+
+   
+    /* Center and scale the background nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+     /* Full height */
+     height: 100%; 
+
+     margin-top: 10%;
+  
+}
+
+/* Center all the content to the width and height */
+
+
+h1{
+    color: #ffffff;
+    font-size: 4rem;
+    font-family: 'Shrikhand', cursive;
+}
+
+h2{
+    color: #FFFFFF;
+}
+
+.jumbotron{
+    background-color: rgb(0,0,0,.6);
+           
+}
+
+
+
