@@ -1,9 +1,11 @@
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 TODO:
 - add an edit button so that the order's name can be changed (write a function and place it in drawDOM)
-- change Input forms to Selection Forms, see line 124-135
-- (optional) Create a CSS style-sheet to decorate the HTML
 - (optional) Tweek Table Layout
+
+completed:
+- css styling
+- changing text-input to selection-forms
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
 //The Topping class contructs objects for a pizza's toppings.
@@ -141,25 +143,56 @@ function createOrderTable(order){
     let preferenceTh = document.createElement('th');
     let createTh = document.createElement('th');
 
-//TODO: figure out how to change these from input to select forms
-
-    let nameInput = document.createElement('input'); // this should be changed to a <select> element
+    //nameInput makes a selection box for the avaiable toppings:
+    let nameInput = document.createElement('select');
     nameInput.setAttribute('id', `name-input-${order.id}`);
-    nameInput.setAttribute('type', 'text'); //The select element does not require this line
     nameInput.setAttribute('class', 'form-control');
 
-    //options could then be added by appending a children to nameInput
+    let optionPepperoni = document.createElement('option');
+    optionPepperoni.innerHTML = "Pepperoni";
+    nameInput.appendChild(optionPepperoni);
 
-    //nameInput could have a variety of toppings to pick from ex. pepperoni, onion, mushroom, ect.
+    let optionSausage = document.createElement('option');
+    optionSausage.innerHTML = "Sausage";
+    nameInput.appendChild(optionSausage);
 
-    let preferenceInput = document.createElement('input')// this should be changed to a <select> element
+    let optionOnion = document.createElement('option');
+    optionOnion.innerHTML = "Onion";
+    nameInput.appendChild(optionOnion);
+
+    let optionOlives = document.createElement('option');
+    optionOlives.innerHTML = "Olives";
+    nameInput.appendChild(optionOlives);
+
+    let optionBellPepper = document.createElement('option');
+    optionBellPepper.innerHTML = "Bell Pepper";
+    nameInput.appendChild(optionBellPepper);
+
+    let optionJalapeno = document.createElement('option');
+    optionJalapeno.innerHTML = "Jalapeño";
+    nameInput.appendChild(optionJalapeno);
+
+    let optionMushroom = document.createElement('option');
+    optionMushroom.innerHTML = "Mushroom";
+    nameInput.appendChild(optionMushroom);
+
+
+    //preferenceInput makes a selection box for the topping preference:
+    let preferenceInput = document.createElement('select')
     preferenceInput.setAttribute('id', `preference-input-${order.id}`);
-    preferenceInput.setAttribute('type', 'text');//The select element does not require this line
     preferenceInput.setAttribute('class', 'form-control');
 
-    //options could then be added by appending a children to preferenceInput
+    let prefWholeZa = document.createElement('option');
+    prefWholeZa.innerHTML = "Whole Pizza";
+    preferenceInput.appendChild(prefWholeZa);
 
-    //preferenceInput should be if they want it on the left half, the right half, or the whole pizza.
+    let prefLeftHalf = document.createElement('option');
+    prefLeftHalf.innerHTML = "Left Half";
+    preferenceInput.appendChild(prefLeftHalf);
+
+    let prefRightHalf = document.createElement('option');
+    prefRightHalf.innerHTML = "Right Half";
+    preferenceInput.appendChild(prefRightHalf);
 
     let newToppingButton = createNewToppingButton(order);
     nameTh.appendChild(nameInput);
