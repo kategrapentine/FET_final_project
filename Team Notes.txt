@@ -1,0 +1,9 @@
+Keep track of edits in this document:
+
+Log 1. Kate -
+
+Uploaded initial project files, index.js and index.html with some code to work off of.
+
+Pedro and Claudia joined the team.
+
+2. 
