@@ -8,4 +8,8 @@ Pedro and Claudia joined the team.
 
 2. Claudia added the style.css file and made edits to index.html
 
-3. Claudia and Kate worked on adding a phone number form.
+3. Kate added editted index.js to add the topping selection boxes
+
+3. Claudia added a form to add the customer's phone number, Kate added some code to the onClick() function
+
+4. Pedro added edit buttons for the orders.
