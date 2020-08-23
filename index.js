@@ -40,6 +40,8 @@ onClick('create-new-order', () => {
         alert("We currently have an order under that name, please provide your initial so we can find you!");
     } else {
         orders.push(new Order(orderId++, getValue('new-order-name'), getValue('new-phone')));
+        document.getElementById('new-order-name').value = '';
+        document.getElementById('new-phone').value = '';
         drawDOM(); 
     }
 });
@@ -66,20 +68,20 @@ function getValue(id) {
     return document.getElementById(id).value;
 }
 
-
-//drawDOM finds the Div in index.html and appends the table(see createOrderTable 129) for a customer's order:
 function drawDOM() {
     let orderDiv = document.getElementById('app');
     clearElement(orderDiv);
     for (order of orders) {
         let table = createOrderTable(order);
         let title = document.createElement('h2');
-        title.innerHTML = `${order.name}'s Pizza`;
+        title.innerHTML = `${order.name}'s Pizza `;
         let phone = document.createElement('p');
-        phone.innerHTML = `Phone Number: ${order.phoneNumber}`;
+        phone.innerHTML = `Phone Number: ${order.phoneNumber} `;
         title.appendChild(createDeleteOrderButton(order));
+        title.appendChild(createEditNameButton(order));
         orderDiv.appendChild(title);
         orderDiv.appendChild(phone);
+        phone.append(createEditPhoneButton(order));
         orderDiv.appendChild(table);
         for (topping of order.toppings) {
             createToppingRow(order, table, topping);
@@ -123,8 +125,27 @@ function createDeleteOrderButton(order) {
     return btn;
 }
 
-//createEditOrderButton could possibly go here?
+function createEditNameButton(order) {
+    let btn = document.createElement('button');
+    btn.className = 'btn btn-light';
+    btn.innerHTML = 'Edit Name';
+    btn.onclick = () => {
+    order.name = prompt('What would you like to change the name to?');
+    drawDOM();
+    };
+    return btn;
+}
 
+function createEditPhoneButton(order) {
+    let btn = document.createElement('button');
+    btn.className = 'btn btn-success';
+    btn.innerHTML = 'Edit';
+    btn.onclick = () => {
+        order.phoneNumber = prompt(`What's a good number to reach you at?`);
+        drawDOM();
+    };
+    return btn;
+}
 
 //createNewToppingButton makes a button in the table that submits the User's input:
 function createNewToppingButton(order) {
