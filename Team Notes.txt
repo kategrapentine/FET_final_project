@@ -7,3 +7,5 @@ Uploaded initial project files, index.js and index.html with some code to work o
 Pedro and Claudia joined the team.
 
 2. Claudia added the style.css file and made edits to index.html
+
+3. Claudia and Kate worked on adding a phone number form.
