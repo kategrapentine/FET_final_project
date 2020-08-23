@@ -1,13 +1,3 @@
-/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-TODO:
-- add an edit button so that the order's name can be changed (write a function and place it in drawDOM)
-- (optional) Tweek Table Layout
-
-completed:
-- css styling
-- changing text-input to selection-forms
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-
 //The Topping class contructs objects for a pizza's toppings.
 class Topping {
     constructor(name, preference) {
@@ -19,9 +9,10 @@ class Topping {
 
 //The Order class contructs the order for the customer's pizza. (only one pizza for order so far)
 class Order {
-    constructor(id, name) {
+    constructor(id, name, phoneNumber) {
         this.id = id;
         this.name = name;
+        this.phoneNumber = phoneNumber;
         this.toppings = [];
     }
 
@@ -42,9 +33,27 @@ let orderId = 0;
 
 //onClick takes an element from the orders array and then draws it to the DOM;
 onClick('create-new-order', () => {
-    orders.push(new Order(orderId++, getValue('new-order-name')))
-    drawDOM();  
+    let newOrder = getValue('new-order-name');
+    if (newOrder === "") {
+        alert("Please enter your name!")
+    } else if (isDuplicate(newOrder) === true) {
+        alert("We currently have an order under that name, please provide your initial so we can find you!");
+    } else {
+        orders.push(new Order(orderId++, getValue('new-order-name'), getValue('new-phone')));
+        drawDOM(); 
+    }
 });
+
+function isDuplicate(newOrderName) {
+    for (let i = 0; i < orders.length; i++) {
+        const element = orders[i];
+        if (newOrderName === element.name) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
 
 function onClick(id, action) {
     let element = document.getElementById(id);
@@ -66,8 +75,11 @@ function drawDOM() {
         let table = createOrderTable(order);
         let title = document.createElement('h2');
         title.innerHTML = `${order.name}'s Pizza`;
+        let phone = document.createElement('p');
+        phone.innerHTML = `Phone Number: ${order.phoneNumber}`;
         title.appendChild(createDeleteOrderButton(order));
         orderDiv.appendChild(title);
+        orderDiv.appendChild(phone);
         orderDiv.appendChild(table);
         for (topping of order.toppings) {
             createToppingRow(order, table, topping);

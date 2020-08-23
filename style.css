@@ -27,9 +27,20 @@ h2{
     color: #FFFFFF;
 }
 
+p{
+        color: #ffffff;
+}
+
 .jumbotron{
     background-color: rgb(0,0,0,.6);
            
+}
+
+#app{
+    background-color: rgb(0,0,0,.6);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10%;
 }
 
 
